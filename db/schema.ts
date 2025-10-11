@@ -42,6 +42,10 @@ export const usersRelations = relations(users, ({ many }) => ({
   issues: many(issues),
 }))
 
+// Types
+export type Issue = InferSelectModel<typeof issues>
+export type User = InferSelectModel<typeof users>
+
 // Status and priority labels for display
 export const ISSUE_STATUS = {
   backlog: { label: 'Backlog', value: 'backlog' },
@@ -55,3 +59,4 @@ export const ISSUE_PRIORITY = {
   medium: { label: 'Medium', value: 'medium' },
   high: { label: 'High', value: 'high' },
 }
+//this file needs to be ts, other npm run db:push will fail, it's looking for scheme.ts
